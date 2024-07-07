@@ -4,9 +4,11 @@ import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.chat.StreamingChatLanguageModel;
 import dev.langchain4j.model.embedding.AllMiniLmL6V2EmbeddingModel;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.ollama.OllamaChatModel;
+import dev.langchain4j.model.ollama.OllamaStreamingChatModel;
 import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 import org.springframework.beans.factory.annotation.Value;
@@ -59,5 +61,12 @@ public class AiConfig {
          return embeddingStore;
       }
       return embeddingStore;
+   }
+
+   public StreamingChatLanguageModel streamingChatLanguageModel(){
+      return OllamaStreamingChatModel.builder()
+         .baseUrl(baseUrl)
+         .modelName(modelName)
+         .build();
    }
 }
