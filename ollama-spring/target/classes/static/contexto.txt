@@ -1,0 +1,1 @@
+Aqui se puede colocar el texto para que el LLM tenga contexto sobre lo que se le pregunta
