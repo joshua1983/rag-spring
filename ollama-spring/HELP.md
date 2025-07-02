@@ -1,29 +1,23 @@
-# Getting Started
+# RAG Lector PDF
 
-### Reference Documentation
+### Objetivo
 
-For further reference, please consider the following sections:
+Leer un documento en PDF y responder preguntas sobre su contenido utilizando un modelo de lenguaje grande (LLM) y una base de datos vectorial.
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.3.1/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.3.1/maven-plugin/reference/html/#build-image)
-* [Ollama](https://docs.spring.io/spring-ai/reference/api/clients/ollama-chat.html)
-* [Chroma Vector Database](https://docs.spring.io/spring-ai/reference/api/vectordbs/chroma.html)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.3.1/reference/htmlsingle/index.html#web)
+### Endpoints
 
-### Guides
+- `/load`: Permite cargar un archivo PDF. Se debe especificar la ruta del archivo en el código. 
+  - [ ] Implementar la carga de archivos PDF.
+- `/chat`: Endpoint que recibe las solicitudes del FRONT.
 
-The following guides illustrate how to use some features concretely:
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
+### Consideraciones
 
-### Maven Parent overrides
+La aplicación se desarrolla usando OLlama y el modelo de lenguaje llama3.1:latest.
+Este se configura en el archivo application.properties.
 
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the
-parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
+#### System Prompts
 
+- Lectura de documentos legales: 
+  - "Eres un asistente experto en análisis de documentos. Tu tarea es responder preguntas sobre el contenido del contrato de arrendamiento proporcionado. NO debes proporcionar asesoramiento legal, crear nuevos contratos, ni interpretar la ley. Solo extrae información y resume hechos presentes en el documento."
+- [ ] Implementar ChromaDB como base de datos vectorial para almacenar los embeddings de los documentos PDF.
