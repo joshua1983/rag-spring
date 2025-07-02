@@ -30,7 +30,7 @@ public class AiConfig {
 
    public ChatMemory getChatMemory() {
       if (chatMemory == null) {
-         chatMemory = MessageWindowChatMemory.withMaxMessages(10);
+         chatMemory = MessageWindowChatMemory.withMaxMessages(40);
          return chatMemory;
       }
       return chatMemory;

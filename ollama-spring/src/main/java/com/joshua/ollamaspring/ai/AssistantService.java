@@ -1,6 +1,5 @@
 package com.joshua.ollamaspring.ai;
 
-import com.joshua.ollamaspring.dto.MessageDto;
 import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.DocumentSplitter;
 import dev.langchain4j.data.document.loader.FileSystemDocumentLoader;
@@ -13,8 +12,6 @@ import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.store.embedding.EmbeddingMatch;
 import dev.langchain4j.store.embedding.EmbeddingStore;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
@@ -67,7 +64,7 @@ public class AssistantService {
 
    public void loadDocument(){
       Document documento = FileSystemDocumentLoader.loadDocument(loadFilePath());
-      DocumentSplitter splitter = DocumentSplitters.recursive(200,70);
+      DocumentSplitter splitter = DocumentSplitters.recursive(2000,200);
       List<TextSegment> segments = splitter.split(documento);
       EmbeddingModel embeddingModel = aiConfig.getEmbeddingModel();
       List<Embedding> embeddings = embeddingModel.embedAll(segments).content();
@@ -76,7 +73,7 @@ public class AssistantService {
    }
 
    private String loadFilePath(){
-      Resource resource = resourceLoader.getResource("classpath:static/contexto.txt");
+      Resource resource = resourceLoader.getResource("classpath:static/1706.03762v7.pdf");
       File file = null;
       try {
          file = resource.getFile();

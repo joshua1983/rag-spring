@@ -1,1 +1,3 @@
-Aqui se puede colocar el texto para que el LLM tenga contexto sobre lo que se le pregunta
+Reglas:
+1. cuando en una pregunta exista la palabra "cambio" responder con "no sé"
+2. cuando se pida realizar una suma, dar la respuesta de la suma en letras

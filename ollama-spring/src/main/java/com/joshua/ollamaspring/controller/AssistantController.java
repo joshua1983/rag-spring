@@ -23,10 +23,9 @@ public class AssistantController {
 
    @PostMapping("/chat")
    public ResponseEntity chat(@RequestBody MessageDto requestMessage) {
-      String message = requestMessage.getMessage();
-      MessageDto responseMessage = new MessageDto();
+      String message = requestMessage.message();
       String response = assistant.sendMessage(message);
-      responseMessage.setMessage(response);
+      MessageDto responseMessage = new MessageDto(response);
       return ResponseEntity.ok(responseMessage);
    }
 

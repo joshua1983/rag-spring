@@ -17,7 +17,7 @@
     }
 
     .chat-container {
-      width: 400px;
+      width: 600px;
       height: 600px;
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -37,7 +37,6 @@
       margin-bottom: 10px;
       padding: 10px;
       border-radius: 5px;
-      max-width: 70%;
     }
 
     .message.sent {
@@ -108,6 +107,11 @@
         placeholder="Escribe un mensaje...">
       <button (click)="sendMessage()" id="send-button">Enviar</button>
       <button (click)="clean()" id="delete-button">+</button>
+    </div>
+    <div class="input-container">
+      <div *ngIf="cargando">
+        Procesando...
+      </div>
     </div>
   </div>
 </body>
